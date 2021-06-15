@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:replace="includes/bootstrapCSS">
+</head>
+<body class="d-flex justify-content-center bg-light">
+
+<form th:action="@{/question/update/}"
+      class="col-md-4 align-self-center position-absolute top-50 translate-middle-y d-flex flex-column"
+      th:object="${questionToEdit}"
+      method="POST">
+    <h2 class="d-flex justify-content-center">Add Question form</h2>
+    <input name="questionId" type="hidden"  th:value="*{id}"/>
+    <div class="mb-3">
+        <label for="questionInput" class="form-label">Question</label>
+        <input type="text" class="form-control"
+               id="questionInput" aria-describedby="questionInputDesc"
+               name="questionName" th:value="*{question}">
+        <div id="questionError" class="form-text text-danger" hidden></div>
+    </div>
+    <input name="answerId" type="hidden"  th:value="*{answer.answerId}"/>
+    <div class="mb-3">
+        <label for="answerOneInput" class="form-label">Answer One</label>
+        <input type="text" class="form-control"
+               id="answerOneInput" aria-describedby="answerOneInputDesc"
+               name="answerOne" th:value="*{answer.answerOne}">
+        <div id="answerOneError" class="form-text text-danger" hidden></div>
+    </div>
+    <div class="mb-3">
+        <label for="answerTwoInput" class="form-label">Answer Two</label>
+        <input type="text" class="form-control"
+               id="answerTwoInput" aria-describedby="answerTwoInputDesc"
+               name="answerSecond" th:value="*{answer.answerTwo}">
+        <div id="answerTwoError" class="form-text text-danger" hidden></div>
+    </div>
+    <div class="mb-3">
+        <label for="answerThreeInput" class="form-label">Answer Three</label>
+        <input type="text" class="form-control"
+               id="answerThreeInput" aria-describedby="answerThreeInputDesc"
+               name="answerThree" th:value="*{answer.answerThree}">
+        <div id="answerThreeError" class="form-text text-danger" hidden></div>
+    </div>
+    <div class="mb-3">
+        <label for="answerFourInput" class="form-label">Answer Four</label>
+        <input type="text" class="form-control"
+               id="answerFourInput" aria-describedby="answerFourInputDesc"
+               name="answerFour" th:value="*{answer.answerFour}">
+        <div id="answerFourError" class="form-text text-danger" hidden></div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" id="submitBtn">Update question</button>
+</form>
+
+<div th:replace="includes/bootstrapJS"></div>
+<div th:replace="includes/JQuery"></div>
+</body>
+</html>

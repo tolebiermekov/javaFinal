@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>Vote</title>
+</head>
+<body>
+<header th:replace="includes/header"></header>
+<h2 class="text-center">Vote form</h2>
+<form action="/vote" method="post" th:object="${votesList}"
+      class="col-md-4 align-self-center position-absolute top-50 translate-middle-y d-flex flex-column">
+    <div class="mb-3" th:each="vote : ${votesList}">
+        <label class="form-label font-weight-bold" th:text="${vote.question}"></label><br>
+        <input type="radio" th:value="${vote.answer.answerOne}" th:name="${vote.question}" required> <span th:text="${vote.answer.answerOne}"></span><br>
+        <input type="radio" th:value="${vote.answer.answerTwo}" th:name="${vote.question}" required> <span th:text="${vote.answer.answerTwo}"></span><br>
+        <input type="radio" th:value="${vote.answer.answerThree}" th:name="${vote.question}" required> <span th:text="${vote.answer.answerThree}"></span><br>
+        <input type="radio" th:value="${vote.answer.answerFour}" th:name="${vote.question}" required> <span th:text="${vote.answer.answerFour}"></span><br>
+        <div id="questionError" class="form-text text-danger" hidden></div>
+    </div>
+    <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
+</form>
+
+<div th:replace="includes/bootstrapJS"></div>
+<div th:replace="includes/JQuery"></div>
+
+</body>
+</html>

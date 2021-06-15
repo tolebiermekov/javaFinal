@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Statistics</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+
+    </style>
+</head>
+<body>
+<header th:replace="includes/header"></header>
+
+<div class="mt-5 container">
+    <div class="text-center">
+        <a style="text-decoration: none" href="/admin/showQuestions">See voting stats</a>
+    </div>
+    <br>
+    <h3 style="text-align: center">Gender percentage</h3>
+    <div id="genderDiv" class="mt-5">
+        <div class="row" th:each="gender : ${genders}">
+            <h5 class="col-md-6" style="text-align: right" th:text="${gender.key}"></h5>
+            <h6 class="col-md-6" style="text-align: left" th:text="${gender.value+'%'}"></h6>
+        </div>
+    </div>
+    <hr>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Group name</th>
+            <th scope="col">Gender</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <th scope="row" th:text="${user.id}"></th>
+            <td th:text="${user.firstName}"></td>
+            <td th:text="${user.lastName}"></td>
+            <td th:text="${user.groupName}"></td>
+            <td th:text="${user.gender}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

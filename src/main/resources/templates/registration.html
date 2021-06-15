@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link th:replace="includes/bootstrapCSS">
+    <style>
+        form{
+            margin-top: 30rem;
+        }
+    </style>
+</head>
+<body class="d-flex justify-content-center bg-light">
+
+<form action="/registration" method="post" class="col-md-4 align-self-center translate-middle-y d-flex flex-column" th:object="${userForm}">
+    <h2 class="d-flex justify-content-center">Registration form</h2>
+
+    <div class="mb-3">
+        <label for="usernameInput" class="form-label">Username</label>
+        <input type="text" class="form-control" id="usernameInput" aria-describedby="usernameInputDesc" name="username" th:field="*{username}">
+        <div id="usernameError" class="form-text text-danger" hidden></div>
+    </div>
+    <div class="mb-3">
+        <label for="passwordInput" class="form-label">Password</label>
+        <input type="password" class="form-control" id="passwordInput" name="password" th:field="*{password}">
+        <div class="form-text">We'll never share your password with anyone else.</div>
+        <div id="passwordError" class="form-text text-danger" hidden></div>
+    </div>
+    <div class="mb-3">
+        <label for="rePasswordInput" class="form-label">Re write password</label>
+        <input type="password" class="form-control" id="rePasswordInput" name="re-password">
+        <div id="rePasswordError" class="form-text text-danger" hidden>Password don't match.</div>
+    </div>
+    <div class="mb-3">
+        <label for="fnameInput" class="form-label">First name</label>
+        <input type="text" class="form-control" id="fnameInput" name="fname" th:field="*{firstName}">
+        <div id="fnameError" class="form-text text-danger" hidden>First name is empty.</div>
+    </div>
+    <div class="mb-3">
+        <label for="lnameInput" class="form-label">Last name</label>
+        <input type="text" class="form-control" id="lnameInput" name="lname" th:field="*{lastName}">
+        <div id="lnameError" class="form-text text-danger" hidden>Last name is empty.</div>
+    </div>
+    <div class="mb-3">
+        <label for="groupInput" class="form-label" >Group</label><br>
+        <select name="group" class="form-control" id="groupInput" th:field="*{groupName}" required>
+            <option value="Choose group" selected disabled>Choose group</option>
+            <option th:each="group : ${groupList}"  th:value="${group}" name="group" ><span th:text="${group}"></span></option>
+        </select>
+        <div id="groupError" class="form-text text-danger" hidden>Select group</div>
+    </div>
+    <div class="mb-3">
+        <label for="ageInput" class="form-label">Age</label>
+        <input type="number" class="form-control" id="ageInput" name="age" min="12" th:field="*{age}">
+        <div id="ageError" class="form-text text-danger" hidden>Age is empty or less than 12.</div>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Gender</label>
+        <br>
+        <input type="radio" value="Male" name="gender" th:field="*{gender}" required> Male <br>
+        <input type="radio" value="Female" name="gender" th:field="*{gender}" required> Female <br>
+    </div>
+    <div class="mb-3">
+        <label for="interestsInput" class="form-label">Your interests</label>
+        <input type="text" class="form-control" id="interestsInput" name="interests" th:field="*{interests}">
+        <div id="interestsError" class="form-text text-danger" hidden>Interests is empty.</div>
+    </div>
+    <button type="submit" class="btn btn-primary" id="submitBtn" disabled>Submit</button>
+    <a href="/login" class="link-primary">Have an account? Click to login</a>
+</form>
+
+<div th:replace="includes/bootstrapJS"></div>
+<div th:replace="includes/JQuery"></div>
+<script type="text/javascript" th:src="@{/js/registrationValidation.js}"></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<header xmlns:th="http://www.thymeleaf.org">
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark top-0">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Voting system</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/index">Home page</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/profile">Profile page</a>
+                    </li>
+                    <li th:if="${session.user.role.name=='ADMIN'}" class="nav-item">
+                        <a class="nav-link" href="/admin" tabindex="-1">Admin page</a>
+                    </li>
+                    <li th:if="${session.user.role.name=='ADMIN'}" class="nav-item">
+                        <a class="nav-link" href="/admin/showStats" tabindex="-1">Statistics</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/vote">Vote</a>
+                    </li>
+                </ul>
+                <form action="/logout" method="post">
+                    <button class="btn btn-outline-danger" type="submit">Logout</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+</header>

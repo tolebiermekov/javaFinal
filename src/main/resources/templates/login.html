@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link th:replace="includes/bootstrapCSS">
+</head>
+<body class="d-flex justify-content-center bg-light">
+
+<form action="/login" method="post" class="col-md-4 align-self-center position-absolute top-50 translate-middle-y d-flex flex-column">
+    <h2 class="d-flex justify-content-center">Login form</h2>
+    <div class="mb-3">
+        <label for="usernameInput" class="form-label">Username</label>
+        <input type="text" class="form-control" id="usernameInput" aria-describedby="usernameInputDesc"
+               name="username">
+    </div>
+    <div class="mb-3">
+        <label for="passwordInput" class="form-label">Password</label>
+        <input type="password" class="form-control" id="passwordInput" name="password">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a href="/registration" class="link-primary">Don't have an account? Click to create</a>
+</form>
+
+<div th:replace="includes/bootstrapJS"></div>
+</body>
+</html>
